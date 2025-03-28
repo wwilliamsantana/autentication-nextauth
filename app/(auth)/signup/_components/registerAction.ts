@@ -4,7 +4,7 @@ import prisma from "@/lib/prisma"
 import { hashSync } from "bcrypt-ts"
 
 
-export default async function registerAction(_prev: any, formData: FormData) {
+export default async function registerAction(_prevState: any, formData: FormData) {
   const entries = Array.from(formData.entries())
   const data = Object.fromEntries(entries) as {
     name: string
