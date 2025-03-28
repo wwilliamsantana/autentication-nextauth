@@ -23,7 +23,7 @@ export default async function RegisterPage() {
       </Card>
       <p className="text-sm text-muted-foreground mt-3">
         Já possui cadastro?{' '}
-        <Link className="text-gray-800 hover:underline" href="/login">
+        <Link className="text-gray-800 hover:underline" href="/signin">
           Faça o login
         </Link>
         .
