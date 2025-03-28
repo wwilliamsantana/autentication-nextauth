@@ -4,7 +4,7 @@ import prisma from "@/lib/prisma"
 import { hashSync } from "bcrypt-ts"
 
 
-export default async function registerAction(formData: FormData) {
+export default async function registerAction(_prev: any, formData: FormData) {
   const entries = Array.from(formData.entries())
   const data = Object.fromEntries(entries) as {
     name: string
@@ -14,7 +14,10 @@ export default async function registerAction(formData: FormData) {
   console.log(data)
 
   if (!data.email || !data.name || !data.password) {
-    throw new Error("Informe todos os dados!")
+    return {
+      message: "Preencha todos os campos!",
+      success: false
+    }
   }
 
   const user = await prisma.user.findUnique({
@@ -24,7 +27,10 @@ export default async function registerAction(formData: FormData) {
   })
 
   if (user) {
-    throw new Error("Usúario já existe!")
+    return {
+      message: "Usuário já cadastrado!",
+      success: false
+    }
   }
 
   await prisma.user.create({
@@ -34,5 +40,10 @@ export default async function registerAction(formData: FormData) {
       password: hashSync(data.password)
     }
   })
+
+  return {
+    message: "Usuário cadastrado com sucesso!",
+    success: true
+  }
 
 }
