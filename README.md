@@ -1,3 +1,6 @@
+
+## Desafio ACEITO - Em processo de codificação 
+
 # Autenticação com NextAuth, Prisma e Next.js 15
 
 Neste mini projeto, você irá implementar a autenticação em um hipotético SaaS de Livros de Programação. Usaremos o NextAuth para gerenciar a autenticação e o Prisma para a interação com o banco de dados, enquanto nosso frameworks será o Next.js 15. O design já está preparado, e o foco será na implementação das funcionalidades sem a necessidade de modificar muito o HTML e o CSS.
@@ -16,8 +19,7 @@ Apesar de, na Dashboard, existir citação à assinaturas, não é necessário s
 - **Crie e gerencie sua base de dados (sqlite, mysql ou postgres) usando o Prisma**
   - Você precisará, pelo menos, de uma tabela de usuários
 	
-    > 👀 **Dicas:**
-    > - Consulte a documentação do NextAuth para entender como configurar o Prisma em conjunto com NextAuth.
+ 
 
 - **Funcionalidade de registrar usuários usando a tela de cadastro**
   - Use, na medida do possível, _server actions_.
@@ -25,8 +27,7 @@ Apesar de, na Dashboard, existir citação à assinaturas, não é necessário s
   - A senha deverá ser criptografada antes de ser salva na base de dados.
   - A tela de cadastro não pode ser acessível a usuários logados (redirecione ao dashboard)
 
-      > 👀 **Dicas:**
-      > - O NextAuth auxilia apenas no login do usuário - a implementação do cadastro de usuário deverá ser feita por você.
+
 
 - **Funcionalidade de logar usuários usando a tela de login**
   - Use, na medida do possível, _server actions_.
