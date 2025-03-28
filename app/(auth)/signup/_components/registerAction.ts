@@ -11,7 +11,7 @@ export default async function registerAction(_prevState: any, formData: FormData
     email: string
     password: string
   }
-  console.log(data)
+
 
   if (!data.email || !data.name || !data.password) {
     return {
