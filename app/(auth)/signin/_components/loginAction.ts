@@ -1,6 +1,7 @@
 "use server"
 
 import { signIn } from "@/auth"
+import { AuthError } from "next-auth"
 import { isRedirectError } from "next/dist/client/components/redirect"
 
 
@@ -20,7 +21,7 @@ export default async function loginAction(_prevState: any, formData: FormData) {
       throw error
     }
 
-    if (error.type === "CrendentialsSignin") {
+    if (error instanceof AuthError && error.type === "CredentialsSignin") {
       return {
         message: "Dados de login inválidos.",
         success: false
