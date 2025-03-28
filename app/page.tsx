@@ -14,8 +14,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import logo from './assets/logo.svg';
 import womanImg from './assets/woman.svg';
+import { auth } from '@/auth';
 
 export default async function Home() {
+  const session = await auth()
+
+
   return (
     <main>
       <section className="container mx-auto text-center pb-20 px-2 md:px-0">
@@ -33,9 +37,17 @@ export default async function Home() {
               </a>
               <DropdownMenuItem>Preço</DropdownMenuItem>
               <DropdownMenuItem>
-                <Link href="/signin">
-                  <Button variant={'bg-white'}>Login</Button>
-                </Link>
+
+                {!session && (
+                  <Link href="/signin">
+                    <Button variant={'bg-white'}>Login</Button>
+                  </Link>
+                )}
+                {session && (
+                  <Link href="/dashboard">
+                    <Button variant={'bg-white'}>Dashboard</Button>
+                  </Link>
+                )}
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
@@ -46,9 +58,16 @@ export default async function Home() {
             <Link href={'#preco'}>
               <Button variant={'link'}>Preço</Button>
             </Link>
-            <Link href="/signin">
-              <Button variant={'bg-white'}>Login</Button>
-            </Link>
+            {!session && (
+              <Link href="/signin">
+                <Button variant={'bg-white'}>Login</Button>
+              </Link>
+            )}
+            {session && (
+              <Link href="/dashboard">
+                <Button variant={'bg-white'}>Dashboard</Button>
+              </Link>
+            )}
           </div>
         </nav>
         <h1 className="md:text-6xl text-2xl font-bold mt-8 md:mt-16">
