@@ -2,6 +2,7 @@
 
 import prisma from "@/lib/prisma"
 import { hashSync } from "bcrypt-ts"
+import { redirect } from "next/navigation"
 
 
 export default async function registerAction(_prevState: any, formData: FormData) {
@@ -41,9 +42,6 @@ export default async function registerAction(_prevState: any, formData: FormData
     }
   })
 
-  return {
-    message: "Usuário cadastrado com sucesso!",
-    success: true
-  }
+  return redirect("/signin")
 
 }
